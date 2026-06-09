@@ -46,8 +46,9 @@ export default function Header() {
             alt="Oakley Physio"
             width={190}
             height={38}
+            unoptimized
             priority
-            className="h-9 w-auto"
+            style={{ objectFit: "contain" }}
           />
         </Link>
 

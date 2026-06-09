@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
 
 type CounterProps = {
   value: number;
@@ -9,27 +8,55 @@ type CounterProps = {
   duration?: number;
 };
 
-export default function Counter({ value, suffix = "", duration = 1800 }: CounterProps) {
+export default function Counter({ value, suffix = "", duration = 1600 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   const [display, setDisplay] = useState(0);
+  const started = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    let frame: number;
-    let start: number | null = null;
+    const el = ref.current;
+    if (!el) return;
 
-    const step = (timestamp: number) => {
-      if (start === null) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
-      if (progress < 1) frame = requestAnimationFrame(step);
+    const start = () => {
+      if (started.current) return;
+      started.current = true;
+
+      const steps = 40;
+      const stepTime = Math.max(Math.round(duration / steps), 20);
+      const increment = value / steps;
+      let current = 0;
+
+      const id = setInterval(() => {
+        current += increment;
+        if (current >= value) {
+          setDisplay(value);
+          clearInterval(id);
+        } else {
+          setDisplay(Math.round(current));
+        }
+      }, stepTime);
     };
 
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, value, duration]);
+    if (typeof IntersectionObserver === "undefined") {
+      start();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            start();
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, duration]);
 
   return (
     <span ref={ref}>

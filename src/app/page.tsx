@@ -18,31 +18,34 @@ export default function HomePage() {
       <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <Image
           src={img.hero}
-          alt="Oakley Physio clinic"
+          alt="Oakley Physio clinic interior"
           fill
           priority
+          unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/70 to-white/40" />
+        <div className="absolute inset-0 bg-black/45" />
 
         <div className="container-x relative py-24">
           <div className="max-w-2xl">
             <Reveal>
-              <span className="label-pill">{site.tagline}</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                {site.tagline}
+              </span>
             </Reveal>
             <Reveal delay={0.12}>
-              <h1 className="heading-xl mt-6 text-charcoal">
+              <h1 className="heading-xl mt-6 text-white drop-shadow-sm">
                 Welcome to <span className="text-orange">Oakley Physio</span>
               </h1>
             </Reveal>
             <Reveal delay={0.22}>
-              <p className="mt-5 text-xl font-semibold text-charcoal">
+              <p className="mt-5 text-xl font-semibold text-white">
                 North Manchester&apos;s No.1 Physiotherapy Practice
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <p className="mt-3 text-lg text-grey">
+              <p className="mt-3 text-lg text-white/85">
                 Appointments within 24 hours — no GP referral needed.
               </p>
             </Reveal>
