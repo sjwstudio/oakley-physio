@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[640px] items-center overflow-hidden py-24 md:min-h-[88vh]">
         <Image
           src={img.hero}
           alt="Oakley Physio clinic interior"
@@ -23,37 +23,46 @@ export default function HomePage() {
           priority
           unoptimized
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[50%_35%]"
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65" />
 
-        <div className="container-x relative py-24">
-          <div className="max-w-2xl">
+        <div className="container-x relative">
+          <div className="mx-auto max-w-xl text-center lg:mx-0 lg:max-w-2xl lg:text-left">
             <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
-                {site.tagline}
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                Chartered Physiotherapy in Prestwich
               </span>
             </Reveal>
-            <Reveal delay={0.12}>
-              <h1 className="heading-xl mt-6 text-white drop-shadow-sm">
+            <Reveal delay={0.1}>
+              <h1 className="heading-xl mt-6 text-white drop-shadow-md">
                 Welcome to <span className="text-orange">Oakley Physio</span>
               </h1>
             </Reveal>
-            <Reveal delay={0.22}>
-              <p className="mt-5 text-xl font-semibold text-white">
+            <Reveal delay={0.18}>
+              <p className="mx-auto mt-5 max-w-md text-lg font-semibold text-white sm:text-xl lg:mx-0">
                 North Manchester&apos;s No.1 Physiotherapy Practice
               </p>
             </Reveal>
-            <Reveal delay={0.3}>
-              <p className="mt-3 text-lg text-white/85">
+            <Reveal delay={0.24}>
+              <p className="mx-auto mt-3 max-w-md text-base text-white/85 lg:mx-0">
                 Appointments within 24 hours — no GP referral needed.
               </p>
             </Reveal>
-            <Reveal delay={0.4}>
-              <div className="mt-9">
-                <Link href="/appointments" className="btn-primary text-base">
-                  Book an Appointment — {site.phone}
+            <Reveal delay={0.32}>
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+                <Link href="/appointments" className="btn-primary justify-center text-base">
+                  Book an Appointment
                 </Link>
+                <a
+                  href={site.phoneHref}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z" />
+                  </svg>
+                  {site.phone}
+                </a>
               </div>
             </Reveal>
           </div>
