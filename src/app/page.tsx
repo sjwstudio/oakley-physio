@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[640px] items-center overflow-hidden py-24 md:min-h-[88vh]">
+      <section className="relative flex min-h-[calc(100svh_-_76px)] items-center overflow-hidden py-16 md:min-h-[88vh] md:py-24">
         <Image
           src={img.hero}
           alt="Oakley Physio clinic interior"
