@@ -175,7 +175,7 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "continence-physiotherapy",
+    slug: "continence",
     title: "Continence Physiotherapy",
     short: "Discreet, expert help for bladder and pelvic floor problems.",
     images: [img.continence],
@@ -242,7 +242,7 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "pregnancy-related-problems",
+    slug: "pregnancy",
     title: "Pregnancy Related Problems",
     short: "Relief from back and pelvic pain during pregnancy.",
     images: [img.pregnancy],
@@ -373,8 +373,54 @@ export const testimonials = [
   "Debbie is an expert in women's health. I was very nervous to go and get my issues seen to, but she was empathetic and made me feel very comfortable. I can't thank her enough.",
 ];
 
-export const pricing = [
-  { name: "Initial Assessment", detail: "Full assessment, diagnosis and start of treatment", price: "Price TBC" },
-  { name: "Follow-up Session", detail: "Ongoing hands-on treatment and rehabilitation", price: "Price TBC" },
-  { name: "Home Visit", detail: "Assessment and treatment in your own home", price: "Price TBC" },
+export type PriceRow = {
+  name: string;
+  price: string;
+  learnMore: string;
+  bookHref: string;
+};
+
+export const pricing: PriceRow[] = [
+  {
+    name: "Physiotherapy initial assessment and treatment",
+    price: "£44",
+    learnMore: "/services#musculo-skeletal",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Follow up treatment",
+    price: "£44",
+    learnMore: "/services#musculo-skeletal",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Pregnancy related pain / longer appointment",
+    price: "£70",
+    learnMore: "/services#pregnancy",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Home visits",
+    price: "£70",
+    learnMore: "/services#elderly-rehabilitation",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Women's / Men's continence",
+    price: "£85",
+    learnMore: "/services#continence",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Follow up women's / men's continence",
+    price: "£60",
+    learnMore: "/services#continence",
+    bookHref: "tel:07806358752",
+  },
+  {
+    name: "Pilates",
+    price: "Enquire within",
+    learnMore: "/services#pilates",
+    bookHref: "/contact",
+  },
 ];

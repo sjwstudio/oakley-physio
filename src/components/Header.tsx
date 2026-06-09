@@ -40,13 +40,15 @@ export default function Header() {
       }`}
     >
       <div className="container-x flex h-[76px] items-center justify-between">
-        <Link href="/" className="flex items-center gap-3" aria-label="Oakley Physio home">
-          <span className="relative h-11 w-11 overflow-hidden rounded-full ring-1 ring-black/10">
-            <Image src={img.logo} alt="Oakley Physio logo" fill className="object-cover" sizes="44px" />
-          </span>
-          <span className="font-heading text-lg font-bold tracking-tight text-charcoal">
-            Oakley Physio
-          </span>
+        <Link href="/" aria-label="Oakley Physio home" className="flex items-center">
+          <Image
+            src={img.logo}
+            alt="Oakley Physio"
+            width={190}
+            height={38}
+            priority
+            className="h-9 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

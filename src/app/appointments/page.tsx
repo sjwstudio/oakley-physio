@@ -44,21 +44,54 @@ export default function AppointmentsPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mt-8 overflow-hidden rounded-4xl border border-charcoal/10">
-              {pricing.map((row, i) => (
-                <div
-                  key={row.name}
-                  className={`flex flex-col gap-1 px-6 py-5 sm:flex-row sm:items-center sm:justify-between ${
-                    i % 2 === 0 ? "bg-white" : "bg-light-grey"
-                  }`}
-                >
-                  <div>
-                    <p className="font-heading text-lg font-bold text-charcoal">{row.name}</p>
-                    <p className="text-sm text-grey">{row.detail}</p>
-                  </div>
-                  <span className="text-sm font-semibold text-orange">{row.price}</span>
-                </div>
-              ))}
+            <div className="mt-8 overflow-x-auto rounded-4xl border border-charcoal/10">
+              <table className="w-full min-w-[700px] border-collapse text-left">
+                <thead>
+                  <tr className="bg-orange text-white">
+                    <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wide">
+                      Treatment
+                    </th>
+                    <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wide">
+                      Price
+                    </th>
+                    <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wide">
+                      Learn More
+                    </th>
+                    <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wide">
+                      Book Now
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pricing.map((row, i) => (
+                    <tr key={row.name} className={i % 2 === 0 ? "bg-white" : "bg-orange/10"}>
+                      <td className="px-6 py-4 font-medium text-charcoal">{row.name}</td>
+                      <td className="whitespace-nowrap px-6 py-4 font-heading font-bold text-orange">
+                        {row.price}
+                      </td>
+                      <td className="px-6 py-4">
+                        <Link
+                          href={row.learnMore}
+                          className="text-sm font-semibold text-charcoal underline-offset-4 hover:text-orange hover:underline"
+                        >
+                          Learn More
+                        </Link>
+                      </td>
+                      <td className="px-6 py-4">
+                        {row.bookHref.startsWith("/") ? (
+                          <Link href={row.bookHref} className="btn-primary !px-4 !py-2 text-xs">
+                            Book Now
+                          </Link>
+                        ) : (
+                          <a href={row.bookHref} className="btn-primary !px-4 !py-2 text-xs">
+                            Book Now
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </Reveal>
 
